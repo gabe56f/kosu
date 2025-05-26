@@ -1,0 +1,18 @@
+[versions]
+kotlin-version = "2.1.21"
+serialization-version = "1.8.1"
+okhttp-version = "5.0.0-alpha.14"
+dokka-version = "2.0.0"
+datetime-version = "0.6.2"
+kache-version = "2.1.1"
+coroutine-version = "1.10.2"
+
+[libraries]
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp-version" }
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine-version" }
+serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization-version" }
+datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "datetime-version" }
+kache = { group = "com.mayakapps.kache", name = "kache", version.ref = "kache-version" }
+
+[plugins]
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka-version" }
