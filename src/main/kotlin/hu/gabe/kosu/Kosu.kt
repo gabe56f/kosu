@@ -43,7 +43,7 @@ class Kosu(
     private val userAgent: String = "Kosu/1.0",
     cacheExpirySeconds: Long = 60 * 10, // 10 minutes
 ) {
-    internal var auth: KosuAuthenticator = NoAuth(this)
+    var auth: KosuAuthenticator = NoAuth(this)
     internal val client
         get() = auth.client
     internal val json by lazy {
