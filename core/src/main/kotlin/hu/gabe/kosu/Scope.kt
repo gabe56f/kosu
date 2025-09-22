@@ -19,6 +19,6 @@ enum class Scope(val json: String) {
         /**
          * All the scopes except [DELEGATE].
          */
-        fun all() = enumValues<Scope>().filter { it != DELEGATE }
+        fun all() = entries.filter { it != DELEGATE }
     }
 }

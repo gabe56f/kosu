@@ -15,7 +15,7 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * Client-based authentication method for osu!v2 api.
  *
- * Doesn't support the [hu.gabe.kosu.Scope.DELEGATE] scope.
+ * Doesn't support the [Scope.DELEGATE] scope.
  */
 
 class AuthorizationCodeGrant(
@@ -110,7 +110,7 @@ class AuthorizationCodeGrant(
     /**
      * Requests the user associated with the current token.
      *
-     * This method requires the [hu.gabe.kosu.Scope.IDENTIFY] scope.
+     * This method requires the [Scope.IDENTIFY] scope.
      */
     override val user: User?
         get() {
