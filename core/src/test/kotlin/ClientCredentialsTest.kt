@@ -80,11 +80,11 @@ class ClientCredentialsTest {
         with(kosu) {
             val score = scores[490625999]
             assertEquals(3219026, score.userId, "Check score parsing")
-            assertEquals(score.beatmap!!.user.username, "CircleChu", "Check extension function")
+            assertEquals("CircleChu", score.beatmap!!.user.username, "Check extension function")
 
             // new scores
             val soloScore = scores.standard[4791231767]
-            assertEquals(soloScore.user.username, "liponshow", "Check lazer score parsing")
+            assertEquals("liponshow", soloScore.user.username, "Check lazer score parsing")
 
             // score with mods
             val modScore = scores[4615985219]
@@ -96,7 +96,7 @@ class ClientCredentialsTest {
     fun `Beatmapset test`() {
         with(kosu) {
             val beatmapset = beatmapsets[1283387]
-            assertEquals(beatmapset.mapper, "-Rik-")
+            assertEquals("-Rik-", beatmapset.mapper)
         }
     }
 
@@ -111,13 +111,13 @@ class ClientCredentialsTest {
     fun `Search test`() {
         with(kosu) {
             val userSearch = search("gabe56f", mode = SearchRequests.SearchMode.USERS)
-            assertTrue { userSearch.users!!.data.isNotEmpty() }
-            assertTrue { userSearch.users!!.data.any { it.username == "gabe56f" } }
-            assertTrue { userSearch.wikiPages == null || userSearch.wikiPages.data.isEmpty() }
+            assertTrue("Check if search results are not empty") { userSearch.users!!.data.isNotEmpty() }
+            assertTrue("Check if search results are what we searched for") { userSearch.users!!.data.any { it.username == "gabe56f" } }
+            assertTrue("Check if search results only return the type we searched for") { userSearch.wikiPages == null || userSearch.wikiPages.data.isEmpty() }
 
             val genericSearch = search["peppy"]
-            assertTrue { genericSearch.wikiPages != null && genericSearch.wikiPages.data.any { "peppy" in it.title } }
-            assertTrue { genericSearch.users != null && genericSearch.users.data.any { it.id == 2L } }
+            assertTrue("Check if generic search returns everything") { genericSearch.wikiPages != null && genericSearch.wikiPages.data.any { "peppy" in it.title } }
+            assertTrue("Check if generic search returns everything") { genericSearch.users != null && genericSearch.users.data.any { it.id == 2L } }
         }
     }
 
@@ -126,7 +126,7 @@ class ClientCredentialsTest {
         with(kosu) {
             val beatmapsets = beatmaps[listOf(2665294, 4445719)]
 
-            assertEquals(2, beatmapsets.size)
+            assertEquals(2, beatmapsets.size, "")
             assertTrue("Check beatmap query") { beatmapsets.any { it.id == 2665294L } } // KARMANATIONS - top diff
             assertTrue { beatmapsets.any { it.id == 4445719L } } // Sunglow
 

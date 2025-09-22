@@ -21,10 +21,6 @@ dependencies {
     compileOnly(kotlin("gradle-plugin"))
 }
 
-kotlin {
-    jvmToolchain(22)
-}
-
 gradlePlugin {
     plugins {
         create("kosuPlugin") {

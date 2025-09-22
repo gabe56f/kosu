@@ -85,14 +85,15 @@ internal fun OkHttpClient.get(
 }
 
 internal fun setKosu(obj: Any, kosu: Kosu): Any {
-    if (obj is KosuChild || obj is IKosuVisitable) {
-        if (obj is KosuChild)
-            obj.kosu = kosu
+    if (obj is KosuChild)
+        obj.kosu = kosu
 
-        if (obj is IKosuVisitable)
-            obj.getVisitableChildren().forEach { setKosu(it, kosu) }
-    } else if (obj is List<*>)
+    if (obj is IKosuVisitable)
+        obj.getVisitableChildren().forEach { setKosu(it, kosu) }
+
+    if (obj is List<*>)
         obj.forEach { it?.let { setKosu(it, kosu) } }
+
     return obj
 }
 

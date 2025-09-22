@@ -33,7 +33,3 @@ tasks.test {
     systemProperty("kosu_client_api_key", project.findProperty("client.apiKey")!!)
     useJUnitPlatform()
 }
-
-kotlin {
-    jvmToolchain(22)
-}
